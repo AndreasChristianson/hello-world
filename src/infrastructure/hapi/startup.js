@@ -1,7 +1,7 @@
 import {serverFactory} from './configure-server';
 
 export const startHapi = async () => {
-    const server = serverFactory();
+    const server = await serverFactory();
 
     await server.start();
 

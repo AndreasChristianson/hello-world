@@ -14,7 +14,8 @@
     "eslint-config-get-off-my-lawn": "^5.0.1",
     "jest": "^24.9.0",
     "jest-chain": "^1.1.2",
-    "jest-extended": "^0.11.2"
+    "jest-extended": "^0.11.2",
+    "nodemon": "^1.19.4"
   },
   "scripts": {
     "dev": "NODE_ENV=test nodemon --es-module-specifier-resolution=node --experimental-modules index.js",
@@ -25,8 +26,10 @@
     "unit": "jest",
     "preunit": "yarn lint --fix"
   },
+  "type": "module",
   "dependencies": {
-    "@hapi/hapi": "^18.4.0"
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/inert": "^5.2.2"
   },
   "files": [
     "src",

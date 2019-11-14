@@ -1,4 +1,5 @@
 import Hapi from '@hapi/hapi';
+import inert from '@hapi/inert';
 
 import {routes} from '../../routes';
 
@@ -9,17 +10,17 @@ jest.mock('@hapi/hapi');
 describe('configure-server', () => {
     let mockServer;
 
-    beforeEach(() => {
+    beforeEach(async () => {
         jest.spyOn(process, 'on');
 
         mockServer = {
             start: jest.fn(),
             stop: jest.fn(),
-            route: jest.fn()
-
+            route: jest.fn(),
+            register: jest.fn()
         };
         Hapi.Server.mockImplementation(() => mockServer);
-        serverFactory();
+        await serverFactory();
     });
 
     afterEach(jest.clearAllMocks);
@@ -29,6 +30,10 @@ describe('configure-server', () => {
             host: '0.0.0.0',
             port: 5555
         });
+    });
+
+    test('registers inert', () => {
+        expect(mockServer.register).toHaveBeenCalledWith(inert);
     });
 
     describe.each(['SIGINT', 'SIGTERM'])('%s', (signal) => {

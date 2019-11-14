@@ -10,7 +10,7 @@ describe('startHapi', () => {
         mockServer = {
             start: jest.fn()
         };
-        serverFactory.mockReturnValue(mockServer);
+        serverFactory.mockResolvedValue(mockServer);
     });
     test('should start the server', async () => {
         await startHapi();
