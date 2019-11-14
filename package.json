@@ -1,0 +1,11 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AndreasChristianson/hello-world.git",
+  "author": "Andreas Christianson <achristianson@hy-vee.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
