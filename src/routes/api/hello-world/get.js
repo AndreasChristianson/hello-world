@@ -1,7 +1,11 @@
 export default {
-    handler: () => ({
-        message: 'hiya!'
-    }),
-    method: 'GET',
+    handler: (request) => {
+        console.log(request.payload);
+
+        return {
+            message: 'hiya!'
+        };
+    },
+    method: 'POST',
     path: '/api/hello-world'
 };
