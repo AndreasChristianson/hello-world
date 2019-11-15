@@ -1,13 +1,15 @@
 import {serverFactory} from '../../../infrastructure/hapi/configure-server';
 
-describe('GET:/healthz', () => {
+describe('POST:/expression', () => {
     let server,
         request;
 
     beforeEach(async () => {
         server = await serverFactory();
         request = {
-            url: '/api/hello-world'
+            url: '/api/expression',
+            method: 'POST',
+            payload: { input: "1+1=2" }
         };
     });
 
@@ -21,7 +23,17 @@ describe('GET:/healthz', () => {
         const response = await server.inject(request);
 
         expect(response.result).toStrictEqual({
-            message: 'hiya!'
+            'operator': 'equals',
+            'arguments': [
+                {
+                    'operator': 'addition',
+                    'arguments': [
+                        1,
+                        1
+                    ]
+                },
+                2
+            ]
         });
     });
 });
