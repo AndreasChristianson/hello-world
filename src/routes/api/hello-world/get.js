@@ -1,7 +1,9 @@
 export default {
-    handler: () => ({
-        message: 'hiya!'
-    }),
-    method: 'GET',
-    path: '/api/hello-world'
+    handler: (request) => {
+        const { payload: {input} } = request 
+        
+        return true
+    },
+    method: 'POST',
+    path: '/api/expression'
 };
